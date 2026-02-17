@@ -37,7 +37,19 @@ The system consists of **Three independent services**:
 
 ## ⚙️ Services
 
-### 🧠 1. Wercel-fetch
+### 💻 1. Frontend Interface (Deployment Dashboard)
+**Repository:** [wercel-frontend](https://github.com/Kmadhav824/wercel-frontend.git)
+
+The platform provides a simple web interface where users can deploy applications by submitting a Git repository URL.
+
+#### Features
+
+- Input box for users to submit Git repository URLs
+- Initiates deployment workflow through backend API
+- Displays deployment status and progress
+- Communicates with Wercel control plane via REST APIs
+
+### 🧠 2. Wercel-fetch
 **Repository:** [wercel-fetch](https://github.com/Kmadhav824/Wercel-fetch)
 
 - Handles project creation and deployment requests
@@ -54,7 +66,7 @@ The system consists of **Three independent services**:
 
 ---
 
-### 🔨 2. wercel-deploy (Build Worker Service , Upload build files to R2)
+### 🔨 3. wercel-deploy (Build Worker Service , Upload build files to R2)
 **Repository:** [wercel-deploy](https://github.com/Kmadhav824/Wercel-build)
 
 - Installs project dependencies
@@ -77,7 +89,7 @@ The system consists of **Three independent services**:
 - Artifact handling
 ---
 
-### 🌐 3. wercel-request-handler (Hosting / Request Router)
+### 🌐 4. wercel-request-handler (Hosting / Request Router)
 **Repository:** [wercel-request-handler](https://github.com/Kmadhav824/Wercel-request-handler)
 
 - Handles incoming user traffic
