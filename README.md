@@ -28,7 +28,6 @@ The system consists of **Three independent services**:
 
 1. User submits Git repository
 2. Wercel clones repo locally
-3. Source files uploaded to Cloudflare R2
 4. Build service compiles project
 5. Deployment service publishes build output
 6. Request handler serves application to users
@@ -49,14 +48,15 @@ The platform provides a simple web interface where users can deploy applications
 - Displays deployment status and progress
 - Communicates with Wercel control plane via REST APIs
 
-### 🧠 2. Wercel-fetch
-**Repository:** [wercel-fetch](https://github.com/Kmadhav824/Wercel-fetch)
+### 🧠 2. Wercel-fetch-build-deploy
+**Repository:** [Private]
 
 - Handles project creation and deployment requests
 - Clones user Git repositories locally
-- Uploads source code to Cloudflare R2 object storage
 - Manages build job orchestration
+- Builds the project on VM or locally
 - Tracks deployment state and workflow
+- Push the built artifacts to CloudFlare Object store
 
 **Key Concepts**
 - Backend service architecture
@@ -66,31 +66,8 @@ The platform provides a simple web interface where users can deploy applications
 
 ---
 
-### 🔨 3. wercel-deploy (Build Worker Service , Upload build files to R2)
-**Repository:** [wercel-deploy](https://github.com/Kmadhav824/Wercel-build)
-
-- Installs project dependencies
-- Executes build commands
-- Generates production artifacts
-- Processes builds in isolated environment
-
-**Key Concepts**
-- Worker architecture
-- Fault isolation
-- Parallel processing
-- Resource management
-
-- Receives build outputs
-- Publishes deployment artifacts
-- Manages deployment lifecycle
-- Enables production hosting
-- Deployment pipeline
-- Release management
-- Artifact handling
----
-
-### 🌐 4. wercel-request-handler (Hosting / Request Router)
-**Repository:** [wercel-request-handler](https://github.com/Kmadhav824/Wercel-request-handler)
+### 🌐 3. wercel-request-handler (Hosting / Request Router)
+**Repository:** [Private]
 
 - Handles incoming user traffic
 - Routes requests to deployed applications
@@ -137,11 +114,6 @@ This project was built to understand:
 - Microservice-style design
 - Scalable infrastructure principles
 - Production deployment workflows
-
----
-
-## 📈 Future Improvements
-
 - Message queue for job scheduling
 - Distributed build workers
 - Load balancing
@@ -149,7 +121,10 @@ This project was built to understand:
 - Deployment rollback system
 - Monitoring and logging
 - Authentication system
+---
 
+## 📈 Future Improvements
+- Handling Enormous traffic and Parallely jobs
 ---
 
 ## 👨‍💻 Author
